@@ -1,20 +1,11 @@
-from __future__ import print_function
-import json
-import sys
 from bottle import get, route, run, template
-import re
-import datetime
-from datetime import date
-from bottle import response
 
 import logging
 logger = logging.getLogger()
 
 import os
 import pymongo
-import gridfs
 import pytz
-from bson.codec_options import CodecOptions
 
 TZ=pytz.timezone("Asia/Taipei")
 
