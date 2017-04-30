@@ -1,6 +1,6 @@
 <div class = "row">
 	<hr>
-	<div id="images">
+	<div>
 		% if len(images) > 0:
 			% for image in images:
 				<div class = "col-sm-6 col-md-3">

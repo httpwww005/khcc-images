@@ -31,12 +31,12 @@
 			var address = get_selected()
 
 			if( address == null ) {
-				$("#message").text("ERROR!")
+				$("#images").text("ERROR!")
 			} else {
                 $.ajax({
                     url:"/images/"+address
                 }).done(function(data){
-					$("#message").html(data)
+					$("#images").html(data)
                 })
 			}
 
@@ -46,7 +46,7 @@
 					$.ajax({
 						url:"/images/"+address
 					}).done(function(data){
-						$("#message").html(data)
+						$("#images").html(data)
 					})
 
 				}
@@ -68,7 +68,7 @@
 				<option value="">No data available</option>
 			% end
 		</select>
-		<div id=message></div>
+		<div id=images></div>
 	</div>
 </body>
 </html>
