@@ -5,9 +5,6 @@ logger = logging.getLogger()
 
 import os
 import pymongo
-import pytz
-
-TZ=pytz.timezone("Asia/Taipei")
 
 MONGODB_URI=os.environ["MONGODB_URI"]
 client = pymongo.MongoClient(MONGODB_URI)
