@@ -8,6 +8,7 @@
 				</div>
 			% end
 		% end
+
 		% if len(gdimages) > 0:
 			% for image in gdimages:
 				<div class = "col-sm-6 col-md-3">
