@@ -25,7 +25,14 @@
 
 
 		$(document).ready(function() {
-			random_pick()
+			var pathname = window.location.pathname
+
+			if(pathname == "/") {
+				random_pick()
+			} else {
+				var house_id = window.location.pathname.slice(1)
+				$('#address_select').val(house_id)
+			}
 
 			var address = get_selected()
 

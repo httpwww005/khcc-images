@@ -12,9 +12,9 @@ client = pymongo.MongoClient(MONGODB_URI)
 collection_imgur = client["khcc"]["imgur"]
 collection_gdimages = client["khcc"]["gdimages"]
 
-
-@get('/')
-def index():
+@route('/')
+@route('/<house_id:re:[\d-]+>')
+def index(house_id=None):
     addresses = sorted(list(collection_imgur.distinct("address")))
 
     return template('index', addresses = addresses)
