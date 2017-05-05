@@ -4,7 +4,7 @@
 		% if len(images) > 0:
 			% for image in images:
 				<div class = "col-sm-6 col-md-3">
-					<a href="http://imgur.com/{{image["id"]}}.jpg" class="thumbnail" target="_blank"><img src="http://imgur.com/{{image["id"]}}.jpg" alt="Generic placeholder thumbnail" /></a>
+					<a href="http://i.imgur.com/{{image["id"]}}.jpg" class="thumbnail" target="_blank"><img src="http://i.imgur.com/{{image["id"]}}.jpg" alt="Generic placeholder thumbnail" /></a>
 				</div>
 			% end
 		% end
