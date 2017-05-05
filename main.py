@@ -12,12 +12,14 @@ client = pymongo.MongoClient(MONGODB_URI)
 collection_imgur = client["khcc"]["imgur"]
 collection_gdimages = client["khcc"]["gdimages"]
 
+heroku_release = os.environ.get("HEROKU_RELEASE_VERSION","unknow")
+
 @route('/')
 @route('/<house_id:re:[\d-]+>')
 def index(house_id=None):
     addresses = sorted(list(collection_imgur.distinct("address")))
 
-    return template('index', addresses = addresses)
+    return template('index', addresses = addresses, heroku_release = heroku_release)
 
 
 @route('/images/<house_id:re:[\d-]+>')

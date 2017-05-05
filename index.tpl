@@ -16,11 +16,29 @@
 				return selected
 			}
 		}
+
 	
 		function random_pick() {
 			var size = $('#address_select option').size()
 			var index = Math.floor(Math.random() * size) + 1  
 			$('#address_select option').eq(index).prop('selected', true);
+			
+			var val = $('#address_select option').eq(index).val()
+			window.history.pushState("", "", val);
+		}
+
+
+		function get_images() {
+			var address = window.location.pathname.slice(1)
+			if( address == null ) {
+				$("#images").text("ERROR!")
+			} else {
+                $.ajax({
+                    url:"/images/"+address
+                }).done(function(data){
+					$("#images").html(data)
+                })
+			}
 		}
 
 
@@ -33,38 +51,21 @@
 				var house_id = window.location.pathname.slice(1)
 				$('#address_select').val(house_id)
 			}
-
-			var address = get_selected()
-
-			if( address == null ) {
-				$("#images").text("ERROR!")
-			} else {
-                $.ajax({
-                    url:"/images/"+address
-                }).done(function(data){
-					$("#images").html(data)
-                })
-			}
+			
+			get_images()
 
 			$("#address_select").change(function(){
 				var address = get_selected()
-				if( address != null ) {
-					$.ajax({
-						url:"/images/"+address
-					}).done(function(data){
-						$("#images").html(data)
-					})
-
-				}
+				window.history.pushState("", "", address);
+				get_images()
 			})
 		});
 
-
 	</script>
-
 </head>
 <body>
 	<div class="container">
+		<p>Release: {{heroku_release}}</p>
 		Address:&nbsp;<select id="address_select">
 			% if len(addresses) > 0:
 				%for address in addresses:
